@@ -1,0 +1,11 @@
+{
+	"results": [
+		{
+			"_id": "001",
+			"test_id": "003",
+			"date": "1700049751935",
+			"result": [true, true, false, false, true],
+			"user_id": "002"
+		}
+	]
+}
