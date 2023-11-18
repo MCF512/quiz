@@ -1,6 +1,6 @@
 import React from 'react';
 import { Container } from './components/UI';
-import { MainPage, QuizPage } from './pages';
+import { EditPage, MainPage, QuizPage } from './pages';
 import { BrowserRouter, Route, Routes } from 'react-router-dom';
 
 export const App: React.FC = () => {
@@ -10,6 +10,7 @@ export const App: React.FC = () => {
 				<Routes>
 					<Route path='/' element={<MainPage />} />
 					<Route path='/quiz' element={<QuizPage />} />
+					<Route path='/edit' element={<EditPage />} />
 				</Routes>
 			</BrowserRouter>
 		</Container>

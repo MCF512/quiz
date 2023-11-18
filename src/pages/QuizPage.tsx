@@ -46,7 +46,7 @@ const QuizPageContainer: React.FC<OnlyStyledComponent> = ({ className }) => {
 	return (
 		<div className={className}>
 			<div className="current">{`${currentQuestion + 1}/${test.length}`}</div>
-			<form ref={formRef}>
+			<form className="form" ref={formRef}>
 				{test.map(({ question, answers }, index) => {
 					return <QuestionForm
 						key={index}
@@ -90,5 +90,11 @@ export const QuizPage = styled(QuizPageContainer)`
 	& .buttons {
 		display: flex;
 		justify-content: center;
+	}
+
+	& .form {
+		display: flex;
+		flex-direction: column;
+		align-items: center;
 	}
 `

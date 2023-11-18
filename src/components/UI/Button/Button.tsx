@@ -4,7 +4,7 @@ import styled from "styled-components";
 interface ButtonProps {
 	className?: string,
 	children?: string,
-	onClick?: (() => any),
+	onClick?: (e?: any) => void,
 	margin?: string,
 	disabled?: boolean
 }

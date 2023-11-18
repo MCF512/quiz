@@ -10,14 +10,16 @@ export interface Action {
 	payload: any
 }
 
+export interface Answer {
+	_id?: string,
+	text: string,
+	correct: boolean
+}
+
 export interface Question {
-	_id: string,
+	_id?: string,
 	question: string,
-	answers: [{
-		_id: string,
-		text: string,
-		correct: boolean
-	}]
+	answers: Array<Answer>
 }
 
 export interface Result {
@@ -28,6 +30,7 @@ export interface Result {
 
 export interface TestState {
 	questions: Array<Question>,
+	id: string,
 	isTestStarted: boolean,
 	userAnswers: Array<boolean|null>
 }

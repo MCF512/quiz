@@ -1,17 +1,12 @@
 import { useDispatch } from "react-redux"
 import styled from "styled-components"
 import { ACTION } from "../../store"
+import { Answer } from "../../types"
 
 interface QuestionFormProps {
 	className?: string,
 	question: string,
-	answers: [
-		{
-			_id: string,
-			text: string,
-			correct: boolean
-		}
-	],
+	answers: Array<Answer>,
 	visible: boolean,
 	index: number
 }
@@ -27,7 +22,7 @@ const QuestionFormContainer: React.FC<QuestionFormProps> = ({ className, questio
 		<div className={className}>
 			<div className="question">{question}</div>
 			{answers.map((ans) => {
-				return <div className="answer" key={ans._id}>
+				return <div className="answer" key={ans._id || Math.random()}>
 					<input
 						type="radio"
 						className="input"
@@ -47,6 +42,7 @@ const QuestionFormContainer: React.FC<QuestionFormProps> = ({ className, questio
 
 export const QuestionForm = styled(QuestionFormContainer)`
 	display: ${({ visible }) => visible ? 'block' : 'none'};
+	max-width: 900px;
 
 	& .question {
 		font-size: 25px;
@@ -56,17 +52,16 @@ export const QuestionForm = styled(QuestionFormContainer)`
 
 	& .answer {
 		margin-bottom: 15px;
-	}
-
-	& .form {
 		display: flex;
-		flex-direction: column;
-		align-items: center;
 	}
 
 	& .label {
+		display: block;
 		font-size: 25px;
+		max-width: 500px;
 		margin-bottom: 1px;
+		word-wrap: normal;
+		margin-left: 5px;
 	}
 
 	& .input  {

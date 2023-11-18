@@ -24,7 +24,9 @@ const MainPageContainer: React.FC<OnlyStyledComponent> = ({ className }) => {
 					margin='0px 20px 0px 0px'
 					onClick={() => navigate('/quiz')}
 				>Запустить тест</Button>
-				<Button>Редактировать тест</Button>
+				<Button
+					onClick={() => navigate('/edit')}
+				>Редактировать тест</Button>
 			</div>
 
 			<h3>Результаты прохождения</h3>

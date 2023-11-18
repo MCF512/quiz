@@ -1,15 +1,15 @@
 import { serverAdress } from "../../constants"
 import { ACTION } from "../actions";
 
-export const startTest = () => {
+export const getTest = () => {
 	return async (dispatch: any) => {
 		try{
 			const request = await fetch(serverAdress + '/quiz');
 
 			const test = await request.json();
-			dispatch({type: ACTION.START_TEST, payload: test[0].questions})
-			dispatch({type: ACTION.SET_TEST_LENGTH, payload: test[0].questions.length})
 
+			dispatch({type: ACTION.GET_TEST, payload: test[0].questions})
+			dispatch({type: ACTION.SET_TEST_ID, payload: test[0]._id})
 		} catch (err) {
 			console.log(err)
 		}
