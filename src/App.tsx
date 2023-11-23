@@ -1,6 +1,6 @@
 import React, { useEffect } from 'react';
 import { Container, Loader } from './components/UI';
-import { EditPage, LoginPage, MainPage, QuizPage, RegisterPage } from './pages';
+import { EditPage, LoginPage, MainPage, ProfilePage, QuizPage, RegisterPage } from './pages';
 import { BrowserRouter, Route, Routes } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
 import { checkAccessToken, selectLoading } from './store';
@@ -25,6 +25,7 @@ export const App: React.FC = () => {
 					<Route path='/edit' element={<EditPage />} />
 					<Route path='/login' element={<LoginPage />} />
 					<Route path='/register' element={<RegisterPage />} />
+					<Route path='/profile' element={<ProfilePage />} />
 				</Routes>
 			</BrowserRouter>
 		</Container>

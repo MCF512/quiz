@@ -48,7 +48,9 @@ export interface AppState {
 	registerError?: string,
 	loginError?: string,
 	registerSuccess: boolean,
-	loginSuccess: boolean
+	loginSuccess: boolean,
+	editingUserError: string,
+	editingUserSuccess: boolean
 }
 
 export interface State {

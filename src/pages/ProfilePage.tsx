@@ -1,11 +1,12 @@
 import styled from "styled-components"
 import { OnlyStyledComponent } from "../types"
-import { Header } from "../components"
+import { Header, ProfileForm } from "../components"
 
 const ProfilePageContainer: React.FC<OnlyStyledComponent> = ({ className }) => {
 	return (
 		<div className={className}>
 			<Header />
+			<ProfileForm />
 		</div>
 	)
 }

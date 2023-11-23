@@ -6,7 +6,9 @@ const initialTestState: AppState = {
 	registerError: '',
 	loginError: '',
 	registerSuccess: false,
-	loginSuccess: false
+	loginSuccess: false,
+	editingUserError: '',
+	editingUserSuccess: false
 }
 
 export const appReducer = (state = initialTestState, action: Action) => {
@@ -28,6 +30,12 @@ export const appReducer = (state = initialTestState, action: Action) => {
 		}
 		case ACTION.SET_LOGIN_SUCCESS: {
 			return {...state, loginSuccess: action.payload}
+		}
+		case ACTION.SET_EDITING_USER_ERROR: {
+			return {...state, editingUserError: action.payload}
+		}
+		case ACTION.SET_EDITING_USER_SUCCESS: {
+			return {...state, editingUserError: action.payload}
 		}
 		default:
 			return state
