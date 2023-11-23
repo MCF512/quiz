@@ -36,10 +36,30 @@ export interface TestState {
 }
 
 export interface UserState {
-	results: Array<Result>
+	results: Array<Result>,
+	isAuth: boolean,
+	email: string,
+	name: string,
+	surname: string
+}
+
+export interface AppState {
+	loading: boolean,
+	registerError?: string,
+	loginError?: string,
+	registerSuccess: boolean,
+	loginSuccess: boolean
 }
 
 export interface State {
+	app: AppState
 	test: TestState,
 	user: UserState
+}
+
+export interface UserInfo {
+	name?: string,
+	surname?: string,
+	email: string,
+	password: string
 }
