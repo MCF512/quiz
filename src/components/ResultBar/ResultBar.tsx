@@ -10,15 +10,16 @@ interface ResultBarProps {
 }
 
 const ResultBarContainer: React.FC<ResultBarProps> = ({ className, result }) => {
-	const { timestamp, answers, testLength } = result
+	const { timestamp, answers, testLength, user } = result
 	const correctAnswersCount = countCorrectAnswers(answers)
-	const { date, time } = getDateAndTime(timestamp)
+	const { date, time } = getDateAndTime(Number(timestamp))
 
 	return (
 		<div className={className}>
 			<div className="date-info">
-				<div className="date">{date}</div>
-				<div className="time">{time}</div>
+				<div className="user">{user}</div>
+				<div className="date">Дата: {date}</div>
+				<div className="time">Время: {time}</div>
 			</div>
 
 			<AnswersStats answers={answers} testLength={testLength} />
@@ -42,5 +43,10 @@ export const ResultBar = styled(ResultBarContainer)`
 
 	& .time {
 		font-size: 12px;
+	}
+
+	& .user {
+		font-size: 18px;
+		font-weight: 600;
 	}
 `

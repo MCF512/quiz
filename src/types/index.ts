@@ -1,7 +1,7 @@
 import { ReactNode } from "react";
 
 export interface OnlyStyledComponent {
-	className? : string,
+	className?: string,
 	children?: ReactNode
 }
 
@@ -22,17 +22,32 @@ export interface Question {
 	answers: Array<Answer>
 }
 
+export interface Test {
+	_id: string,
+	questions: Array<Question>,
+	author: string,
+	testName: string,
+	timestamp: string,
+	email: string,
+	_v: number
+}
+
 export interface Result {
 	timestamp: string | number,
-	answers: Array<boolean|null>,
-	testLength: number
+	answers: Array<boolean | null>,
+	testLength: number,
+	user: string
 }
 
 export interface TestState {
+	testName: string,
 	questions: Array<Question>,
-	id: string,
+	_id: string,
+	author: string,
+	timestamp: string,
 	isTestStarted: boolean,
-	userAnswers: Array<boolean|null>
+	userAnswers: Array<boolean | null>,
+	results: Array<Result>
 }
 
 export interface UserState {
@@ -50,7 +65,8 @@ export interface AppState {
 	registerSuccess: boolean,
 	loginSuccess: boolean,
 	editingUserError: string,
-	editingUserSuccess: boolean
+	editingUserSuccess: boolean,
+	tests: Array<Test>
 }
 
 export interface State {

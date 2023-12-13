@@ -14,9 +14,9 @@ export const editTest = async (id: string, data: Array<Question>) => {
 			})
 		})
 
-		//const res = await req.json()
+		// const res = await req.json()
 		alert('Успешно')
-	} catch(e) {
+	} catch (e) {
 		console.log(e)
 		alert('Произошла ошибка')
 	}

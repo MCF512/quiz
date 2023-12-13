@@ -13,7 +13,7 @@ const HeaderContainer: React.FC<OnlyStyledComponent> = ({ className }) => {
 			<Link to="/">Главная</Link>
 
 			{isAuth && <div className="wrapper">
-				<Link to="user-tests">Мои тесты</Link>
+				<Link to="/user/tests">Мои тесты</Link>
 			</div>}
 
 			<button

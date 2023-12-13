@@ -8,34 +8,38 @@ const initialTestState: AppState = {
 	registerSuccess: false,
 	loginSuccess: false,
 	editingUserError: '',
-	editingUserSuccess: false
+	editingUserSuccess: false,
+	tests: []
 }
 
 export const appReducer = (state = initialTestState, action: Action) => {
 	switch (action.type) {
 		case ACTION.START_LOADING: {
-			return {...state, loading: true}
+			return { ...state, loading: true }
 		}
 		case ACTION.END_LOADING: {
-			return {...state, loading: false}
+			return { ...state, loading: false }
 		}
 		case ACTION.SET_REGISTER_ERROR: {
-			return {...state, registerError: action.payload}
+			return { ...state, registerError: action.payload }
 		}
 		case ACTION.SET_LOGIN_ERROR: {
-			return {...state, loginError: action.payload}
+			return { ...state, loginError: action.payload }
 		}
 		case ACTION.SET_REGISTER_SUCCESS: {
-			return {...state, registerSuccess: action.payload}
+			return { ...state, registerSuccess: action.payload }
 		}
 		case ACTION.SET_LOGIN_SUCCESS: {
-			return {...state, loginSuccess: action.payload}
+			return { ...state, loginSuccess: action.payload }
 		}
 		case ACTION.SET_EDITING_USER_ERROR: {
-			return {...state, editingUserError: action.payload}
+			return { ...state, editingUserError: action.payload }
 		}
 		case ACTION.SET_EDITING_USER_SUCCESS: {
-			return {...state, editingUserError: action.payload}
+			return { ...state, editingUserError: action.payload }
+		}
+		case ACTION.GET_ALL_TESTS: {
+			return { ...state, tests: action.payload }
 		}
 		default:
 			return state

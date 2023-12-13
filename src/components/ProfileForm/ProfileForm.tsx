@@ -1,18 +1,20 @@
 import styled from "styled-components"
 import { OnlyStyledComponent } from "../../types"
 import { useDispatch, useSelector } from "react-redux"
-import { editUser, selectUser } from "../../store"
+import { editUser, selectEditingError, selectEditingSuccess, selectUser } from "../../store"
 import * as yup from 'yup'
 import { useForm } from 'react-hook-form'
 import { yupResolver } from "@hookform/resolvers/yup"
-import { Button } from ".."
+import { Button, SuccessIcon } from ".."
 import { useState } from "react"
-import { Navigate } from "react-router-dom"
+import { Link, Navigate } from "react-router-dom"
 
 const ProfileFormContainer: React.FC<OnlyStyledComponent> = ({ className }) => {
 	const user = useSelector(selectUser)
 	const [edited, setEdited] = useState(false)
 	const dispatch: any = useDispatch()
+	const editSuccess = useSelector(selectEditingSuccess)
+	const editError = useSelector(selectEditingError)
 
 	const schema = yup.object().shape({
 		email: yup
@@ -35,7 +37,7 @@ const ProfileFormContainer: React.FC<OnlyStyledComponent> = ({ className }) => {
 		formState: { errors }
 	} = useForm({ resolver: yupResolver(schema) })
 
-	const errorMessage = errors.email?.message || errors.name?.message || errors.name?.message;
+	const errorMessage = errors.email?.message || errors.name?.message || errors.name?.message || editError;
 
 	if (!user.isAuth) return <Navigate to='/' />
 
@@ -86,18 +88,22 @@ const ProfileFormContainer: React.FC<OnlyStyledComponent> = ({ className }) => {
 				disabled={!edited}
 				onClick={handleSubmit(({ email, name, surname }) => {
 					dispatch(editUser(email, name, surname))
+					setEdited(false)
 				})}
 			>Сохранить</Button>
 
-			<Button>Выйти из аккаунта</Button>
+			<Button onClick={() => {
+				localStorage.removeItem('token')
+				window.location.reload()
+			}}>Выйти из аккаунта</Button>
 
 			{errorMessage && <div className="error">{errorMessage}</div>}
 
-			{/* {loginSuccess && (
+			{/* {editSuccess && (
 				<div className="success">
-					<p>Вы вошли в аккаунт!</p>
+					<p>Регистрация прошла успешно!</p>
 					<SuccessIcon />
-					<Link to='/'>На главную</Link>
+					<Link to='/login'>Войти в аккаунт</Link>
 				</div>
 			)} */}
 		</form>

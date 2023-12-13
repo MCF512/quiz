@@ -2,27 +2,35 @@ import { useRef } from "react"
 import styled from "styled-components"
 import { OnlyStyledComponent } from "../types"
 import { useDispatch, useSelector } from "react-redux"
-import { Button, QuestionForm, ResultsModal } from "../components"
+import { Button, Header, QuestionForm, ResultsModal } from "../components"
 import { useEffect, useState } from "react"
-import { selectQuestions, startTest, selectUserAnswers, ACTION } from "../store"
-import { countCorrectAnswers, saveResultsToStorage } from "../utils"
+import { selectQuestions, selectUserAnswers, ACTION, getTest, saveResult, selectUserNameAndSurname } from "../store"
+import { countCorrectAnswers } from "../utils"
+import { useParams } from "react-router-dom"
 
 const QuizPageContainer: React.FC<OnlyStyledComponent> = ({ className }) => {
 	const test = useSelector(selectQuestions)
 	const [currentQuestion, setCurrentQuestion] = useState(0)
 	const [resultsModalOpen, setResultsModalOpen] = useState(false)
 	const userAnswers = useSelector(selectUserAnswers)
+	const user = useSelector(selectUserNameAndSurname)
 	const dispatch: any = useDispatch();
 	const formRef = useRef<HTMLFormElement>(null)
+	const params = useParams()
+	console.log(params.id)
 
 	const nextQuestion = () => {
 		if (currentQuestion + 1 === test.length) {
 			setResultsModalOpen(true)
-			saveResultsToStorage({
-				timestamp: Date.now(),
-				answers: userAnswers,
-				testLength: test.length
-			})
+			if (params.id) {
+				dispatch(saveResult(
+					params.id,
+					userAnswers,
+					test.length,
+					Date.now(),
+					user
+				))
+			}
 		} else {
 			setCurrentQuestion(currentQuestion + 1)
 		}
@@ -39,12 +47,15 @@ const QuizPageContainer: React.FC<OnlyStyledComponent> = ({ className }) => {
 	}
 
 	useEffect(() => {
-		dispatch(startTest())
+		if (params.id) {
+			dispatch(getTest(params.id))
+		}
 	}, [])
 
 	if (!test.length) return
 	return (
 		<div className={className}>
+			<Header />
 			<div className="current">{`${currentQuestion + 1}/${test.length}`}</div>
 			<form className="form" ref={formRef}>
 				{test.map(({ question, answers }, index) => {
