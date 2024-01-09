@@ -17,7 +17,6 @@ const QuizPageContainer: React.FC<OnlyStyledComponent> = ({ className }) => {
 	const dispatch: any = useDispatch();
 	const formRef = useRef<HTMLFormElement>(null)
 	const params = useParams()
-	console.log(params.id)
 
 	const nextQuestion = () => {
 		if (currentQuestion + 1 === test.length) {

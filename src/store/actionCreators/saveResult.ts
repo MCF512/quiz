@@ -19,7 +19,6 @@ export const saveResult = (id: string, answers: Array<boolean | null>, testLengt
       });
 
       const test = await request.json();
-      console.log(test)
 
       dispatch({ type: ACTION.SET_RESULTS, payload: test.results })
     } catch (err) {

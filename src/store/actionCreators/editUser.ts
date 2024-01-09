@@ -18,9 +18,7 @@ export const editUser = (email: string, name: string, surname: string) => {
 					surname
 				})
 			})
-			//editing
 			const res = await user.json()
-			console.log(res)
 			if (user.status === 302) {
 				dispatch({ type: ACTION.SET_EDITING_USER_ERROR, payload: res })
 			} else {

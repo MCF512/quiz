@@ -17,8 +17,6 @@ export const createTest = async (questions: Array<Question>, testName: string, a
         testName
       })
     })
-    const res = await req.json()
-    console.log(res)
     alert('Успешно')
   } catch (e) {
     console.log(e)
