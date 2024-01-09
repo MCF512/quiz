@@ -7,12 +7,13 @@ interface QuestionFormProps {
 	className?: string,
 	question: string,
 	answers: Array<Answer>,
-	visible: boolean,
+	_visible: boolean,
 	index: number
 }
 
-const QuestionFormContainer: React.FC<QuestionFormProps> = ({ className, question, answers, visible, index }) => {
+const QuestionFormContainer: React.FC<QuestionFormProps> = ({ className, question, answers, _visible, index }) => {
 	const dispatch: any = useDispatch()
+
 
 	const handleChange = (isCorrect: boolean) => {
 		return dispatch({ type: ACTION.SET_USER_ANSWER, payload: { index, isCorrect } })
@@ -41,7 +42,7 @@ const QuestionFormContainer: React.FC<QuestionFormProps> = ({ className, questio
 }
 
 export const QuestionForm = styled(QuestionFormContainer)`
-	display: ${({ visible }) => visible ? 'block' : 'none'};
+	display: ${({ _visible }) => _visible ? 'block' : 'none'};
 	max-width: 900px;
 
 	& .question {

@@ -1,19 +1,18 @@
 import styled from "styled-components"
 import { OnlyStyledComponent } from "../../types"
 import { useDispatch, useSelector } from "react-redux"
-import { editUser, selectEditingError, selectEditingSuccess, selectUser } from "../../store"
+import { editUser, selectEditingError, selectUser } from "../../store"
 import * as yup from 'yup'
 import { useForm } from 'react-hook-form'
 import { yupResolver } from "@hookform/resolvers/yup"
-import { Button, SuccessIcon } from ".."
+import { Button } from ".."
 import { useState } from "react"
-import { Link, Navigate } from "react-router-dom"
+import { Navigate } from "react-router-dom"
 
 const ProfileFormContainer: React.FC<OnlyStyledComponent> = ({ className }) => {
 	const user = useSelector(selectUser)
 	const [edited, setEdited] = useState(false)
 	const dispatch: any = useDispatch()
-	const editSuccess = useSelector(selectEditingSuccess)
 	const editError = useSelector(selectEditingError)
 
 	const schema = yup.object().shape({

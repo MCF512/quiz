@@ -63,7 +63,7 @@ const QuizPageContainer: React.FC<OnlyStyledComponent> = ({ className }) => {
 						question={question}
 						answers={answers}
 						index={index}
-						visible={index === currentQuestion}
+						_visible={index === currentQuestion}
 					/>
 				})}
 			</form>

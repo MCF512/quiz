@@ -11,7 +11,7 @@ const initialTestState: UserState = {
 
 export const userReducer = (state = initialTestState, action: Action) => {
 	switch (action.type) {
-		case ACTION.GET_RESULTS: {
+		case ACTION.SET_RESULTS: {
 			return {...state, results: action.payload}
 		}
 		case ACTION.LOGIN: {

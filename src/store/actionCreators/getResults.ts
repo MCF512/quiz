@@ -5,6 +5,6 @@ export const getResults = () => {
 		const resultsFromStorage = localStorage.getItem('results')
 		const parsedResults = resultsFromStorage ? JSON.parse(resultsFromStorage) : []
 
-		dispatch({type: ACTION.GET_RESULTS, payload: parsedResults})
+		dispatch({type: ACTION.SET_RESULTS, payload: parsedResults})
 	}
 }
