@@ -63,7 +63,7 @@ const EditPageContainer: React.FC<OnlyStyledComponent> = ({ className }) => {
 				return <QuestionEditor
 					question={q}
 					index={index}
-					key={q.question}
+					key={Math.random()}
 					deleteQuestion={() => dispatch(deleteQuestion(questions, index)).then(() => setRerender(!rerender))}
 				/>
 			})}
