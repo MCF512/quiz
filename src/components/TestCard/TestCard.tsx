@@ -67,18 +67,30 @@ export const TestCard = styled(TestCardContainer)`
 	border : 1px solid #4e4e4e;
 	padding: 10px;
 	border-radius: 5px;
-
-	& .text {
-		font-size: 20px;
-	}
+	font-size: 20px;
 
 	& .name {
-		font-size: 20px;
 		font-weight: 600;
 	}
 
 	& .buttons {
 		display: flex;
 		flex-direction: column;
+
+		@media (max-width: 550px) {
+			button {
+			padding: 10px 15px;
+			font-size: 14px;
+		}
+		}
+		
+	}
+
+	@media (max-width: 550px) {
+		font-size: 14px;
+	}
+
+	@media (max-width: 375px) {
+		font-size: 12px;
 	}
 `

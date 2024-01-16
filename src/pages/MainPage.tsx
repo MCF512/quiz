@@ -43,7 +43,18 @@ export const MainPage = styled(MainPageContainer)`
 	& .cards {
 		display: grid;
 		grid-template-columns: repeat(3, 1fr);
-		grid-gap: 15px
+		grid-gap: 15px;
+
+		@media (max-width: 1000px) {
+			grid-template-columns: repeat(2, 1fr);
+		}
+
+		@media (max-width: 550px) {
+			button {
+				font-size: 16px;
+				padding: 10px 15px;
+			}
+		}
 	}
 
 `

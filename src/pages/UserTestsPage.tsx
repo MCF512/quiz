@@ -17,6 +17,7 @@ const UserTestsContainer: React.FC<OnlyStyledComponent> = ({ className }) => {
     <div className={className}>
       <Header />
       <Button
+        className="create-button"
         margin="0 0 10px 0"
         onClick={() => { navigate('/create/test') }}
       >Создать тест</Button>
@@ -49,5 +50,12 @@ export const UserTests = styled(UserTestsContainer)`
     display: grid;
     grid-template-columns: repeat(3, 1fr);
     grid-gap: 10px;
+  }
+
+  & .create-button {
+    @media (max-width: 550px) {
+      font-size: 16px;
+      padding: 10px 15px;
+    }
   }
 `

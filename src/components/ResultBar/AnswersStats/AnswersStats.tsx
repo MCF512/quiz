@@ -87,5 +87,9 @@ export const AnswersStats = styled(AnswersStatsContainer)`
 		font-size: 10px;
 		background-color: #fff;
 	}
+
+	@media (max-width: 550px) {
+		margin-bottom: 5px;
+	}
 `
 

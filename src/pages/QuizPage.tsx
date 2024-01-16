@@ -100,6 +100,13 @@ export const QuizPage = styled(QuizPageContainer)`
 	& .buttons {
 		display: flex;
 		justify-content: center;
+
+		@media (max-width: 550px) {
+			button {
+				font-size: 16px;
+				padding: 10px 15px;
+			}
+		}
 	}
 
 	& .form {

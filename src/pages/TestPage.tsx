@@ -1,7 +1,7 @@
 import { useEffect } from "react";
 import { OnlyStyledComponent, Result } from "../types";
 import { useDispatch, useSelector } from "react-redux";
-import { getTest, selectAuthor, selectQuestions, selectResults, selectTestName, selectTimestamp } from "../store";
+import { getTest, selectAuthor, selectLoading, selectQuestions, selectResults, selectTestName, selectTimestamp } from "../store";
 import { useNavigate, useParams } from "react-router-dom";
 import { Button, Header, ResultBar } from "../components";
 import styled from "styled-components";
@@ -16,6 +16,7 @@ const TestPageContainer: React.FC<OnlyStyledComponent> = ({ className }) => {
   const timestamp = useSelector(selectTimestamp)
   const results = useSelector(selectResults)
   const navigate: any = useNavigate()
+  const isLoading = useSelector(selectLoading)
 
   useEffect(() => {
     if (params.id) {
@@ -26,6 +27,11 @@ const TestPageContainer: React.FC<OnlyStyledComponent> = ({ className }) => {
   return (
     <div className={className}>
       <Header />
+      {isLoading ? 
+      <></>
+      : 
+
+      <>
       <h2 className="title">
         {testName}
       </h2>
@@ -59,6 +65,9 @@ const TestPageContainer: React.FC<OnlyStyledComponent> = ({ className }) => {
           )
         })}
       </div>
+      </>  
+    }
+      
     </div>
   )
 }

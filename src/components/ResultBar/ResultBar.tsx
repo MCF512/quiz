@@ -17,7 +17,7 @@ const ResultBarContainer: React.FC<ResultBarProps> = ({ className, result }) => 
 	return (
 		<div className={className}>
 			<div className="date-info">
-				<div className="user">{user}</div>
+				<div className="user">{user !== ' ' ? user : 'Гость'}</div>
 				<div className="date">Дата: {date}</div>
 				<div className="time">Время: {time}</div>
 			</div>
@@ -48,5 +48,17 @@ export const ResultBar = styled(ResultBarContainer)`
 	& .user {
 		font-size: 18px;
 		font-weight: 600;
+	}
+
+	@media (max-width: 550px) {
+		flex-direction: column;
+
+		& .date-info {
+			margin-bottom: 10px;
+			display: flex;
+			flex-direction: column;
+			align-items: center;
+			justify-content: center;
+		}
 	}
 `
